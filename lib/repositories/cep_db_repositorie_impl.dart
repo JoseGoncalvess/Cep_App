@@ -1,21 +1,25 @@
-import 'dart:developer';
 import 'package:cep_app/models/custom_dio.dart';
-import 'package:cep_app/models/endereco_model.dart';
+import 'package:cep_app/models/cep_model.dart';
 import 'package:dio/dio.dart';
 
-class CepDbRepositorie {
+import 'cep_db_repositorie.dart';
+
+class CepDbRepositorieImpl extends CepDbRepositorie {
   final _customDio = CustomDio4App();
 
+  @override
   Future<List<Cepmodel>> getallceps() async {
     List<Cepmodel> ceps = [];
 
-    try {
-      _customDio.dio.get("/Favor_Ceps").then((json) => {
-            if (json.statusCode == 200) {ceps.add(Cepmodel.fromMap(json.data))}
-          });
-    } on DioError catch (e) {
-      log("O erro foi $e!");
+    Response result = await _customDio.dio.get("/Favor_Ceps");
+    if (result.statusCode == 200) {
+      for (var cep in result.data['results']) {
+          ceps.add(Cepmodel.fromMap(cep));
+      }
+
     }
+
+    
 
     return ceps;
   }

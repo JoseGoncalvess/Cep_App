@@ -1,5 +1,7 @@
-import 'package:cep_app/models/endereco_model.dart';
+
+
+import '../models/via_cep_model.dart';
 
 abstract class CepRepositorie {
-  Future<Cepmodel> getCep(String cep);
+  Future<ViaCepModel> getCep(String cep);
 }

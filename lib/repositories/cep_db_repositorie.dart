@@ -1,5 +1,5 @@
 
-import 'package:cep_app/models/endereco_model.dart';
+import 'package:cep_app/models/cep_model.dart';
 
 
 abstract class CepDbRepositorie {

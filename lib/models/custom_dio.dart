@@ -9,7 +9,7 @@ class CustomDio4App {
 
   CustomDio4App() {
     _dio.options.headers["X-Parse-Application-Id"] = _keyApplicationId;
-    _dio.options.headers["X-Parse-REST-API-Key:"] = _keyrestApiKey;
+    _dio.options.headers["X-Parse-REST-API-Key"] = _keyrestApiKey;
     _dio.options.baseUrl = _keyParseServerUrl;
   }
 }
