@@ -1,7 +1,8 @@
-import 'package:cep_app/models/endereco_model.dart';
 import 'package:cep_app/repositories/cep_repositorie.dart';
 import 'package:cep_app/repositories/cep_repositorie_impl.dart';
 import 'package:flutter/material.dart';
+
+import '../models/via_cep_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final CepRepositorie cepRepositorie = CepRepositorieImpl();
   //A interrogação no final indica começar null
-  Cepmodel? enderecoModel;
+  ViaCepModel? enderecoModel;
   bool loading = false;
   bool infor = false;
 

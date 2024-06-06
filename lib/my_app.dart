@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'pages/splash/splash.dart';
 
 class MyApp extends StatelessWidget {
@@ -10,13 +9,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Busca CEP',
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue, primary: const Color(0xFFFACB3E), secondary:const Color(0xFF1565C0) ),
+          textTheme: TextTheme(
+             displayMedium : TextStyle(
+                  color: Colors.white,
+                  fontSize: MediaQuery.of(context).size.width * 0.05,
+                  fontWeight: FontWeight.bold),
+              displaySmall: TextStyle(
+                fontSize: MediaQuery.of(context).size.width * 0.04,
+                  color: Colors.blue[900], fontWeight: FontWeight.bold)),
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.blue,
+              primary: const Color(0xFFFACB3E),
+              secondary: const Color(0xFF1565C0)),
           useMaterial3: true),
       home: const Splash(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
-
-
-
