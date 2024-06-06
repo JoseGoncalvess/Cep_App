@@ -2,7 +2,6 @@ import 'package:cep_app/models/endereco_model.dart';
 import 'package:cep_app/repositories/cep_repositorie.dart';
 import 'package:cep_app/repositories/cep_repositorie_impl.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,7 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final CepRepositorie cepRepositorie = CepRepositorieImpl();
   //A interrogação no final indica começar null
-  EnderecoModel? enderecoModel;
+  Cepmodel? enderecoModel;
   bool loading = false;
   bool infor = false;
 
@@ -71,10 +70,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Text(
                           'Insira abaixo o CEP',
-                          style: GoogleFonts.robotoSlab(
-                              color: Colors.yellow[700],
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle()
                         ),
                         Container(
                           height: 50,
@@ -173,10 +169,9 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Text(
                             'Logradouro',
-                            style: GoogleFonts.robotoSlab(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
+                            style:TextStyle(color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold)
                           ),
                           Container(
                             width: 350,
@@ -205,8 +200,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text(
                                 'Complemento',
-                                style: GoogleFonts.robotoSlab(
-                                    color: Colors.white,
+                                style: TextStyle(color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -234,8 +228,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text(
                                 'Bairro',
-                                style: GoogleFonts.robotoSlab(
-                                    color: Colors.white,
+                                style: TextStyle(color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -268,8 +261,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text(
                                 'Complemento',
-                                style: GoogleFonts.robotoSlab(
-                                    color: Colors.white,
+                                style: TextStyle(color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -297,8 +289,9 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text(
                                 'Bairro',
-                                style: GoogleFonts.robotoSlab(
-                                    color: Colors.white,
+                                style:
+                                
+                                 TextStyle(color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -331,8 +324,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text(
                                 'DDD',
-                                style: GoogleFonts.robotoSlab(
-                                    color: Colors.white,
+                                style: TextStyle(color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -360,8 +352,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text(
                                 'CEP',
-                                style: GoogleFonts.robotoSlab(
-                                    color: Colors.white,
+                                style: TextStyle(color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold),
                               ),

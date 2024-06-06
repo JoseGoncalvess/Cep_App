@@ -1,26 +1,10 @@
-import 'package:cep_app/pages/Home_Page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'splash_view_model.dart';
 
-class SplashPage extends StatefulWidget {
-  const SplashPage({super.key});
-
+class SplashView extends SplashViewModel{
   @override
-  State<SplashPage> createState() => _SplashPageState();
-}
-
-class _SplashPageState extends State<SplashPage> {
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(seconds: 3)).then((value) => {
-          Navigator.of(context)
-              .push(CupertinoPageRoute(builder: (context) => const HomePage()))
-        });
-  }
-
   Widget build(BuildContext context) {
-    return Scaffold(
+   return Scaffold(
       body: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(color: Colors.blue[800]),
@@ -30,11 +14,11 @@ class _SplashPageState extends State<SplashPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/img/logo.png'),
-            Text(
+            const Text(
               'Cep Certo',
               style: TextStyle(
                   fontSize: 50,
-                  color: Colors.yellow[700],
+                  color: Colors.white,
                   fontWeight: FontWeight.bold),
             )
           ],
@@ -42,4 +26,5 @@ class _SplashPageState extends State<SplashPage> {
       ),
     );
   }
+  
 }
