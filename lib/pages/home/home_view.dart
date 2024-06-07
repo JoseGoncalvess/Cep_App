@@ -3,9 +3,11 @@ import 'package:cep_app/components/custom_butom_bar.dart';
 import 'package:cep_app/components/form_apresentation_cep.dart';
 import 'package:cep_app/pages/home/home_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 
-class HomeView extends HomeViewModel {
+import '../../service/via_cep_service.dart';
+
+class HomeView extends HomeViewModel{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,22 +48,31 @@ class HomeView extends HomeViewModel {
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.8,
                         height: MediaQuery.of(context).size.height * 0.1,
-                        child: TextField(
-                          textAlign: TextAlign.center,
-                          keyboardType: TextInputType.number,
-                          maxLines: 1,
-                          style: const TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w700),
-                          maxLength: 8,
-                          cursorColor: Colors.white,
-                          decoration: InputDecoration(
-                              filled: true,
-                              fillColor:
-                                  Theme.of(context).colorScheme.secondary,
-                              border: const UnderlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(12)),
-                                  borderSide: BorderSide.none)),
+                        child: Consumer<ViaCepService>(
+                          builder: (context, service, child) =>  TextField(
+                            onChanged: (value) {
+                              if (value.length == 8) {
+                                service.setcep(value);
+                              }
+                            },
+                            onSubmitted: (value) {
+                            },
+                            textAlign: TextAlign.center,
+                            keyboardType: TextInputType.number,
+                            maxLines: 1,
+                            style: const TextStyle(
+                                color: Colors.white, fontWeight: FontWeight.w700),
+                            maxLength: 8,
+                            cursorColor: Colors.white,
+                            decoration: InputDecoration(
+                                filled: true,
+                                fillColor:
+                                    Theme.of(context).colorScheme.secondary,
+                                border: const UnderlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(12)),
+                                    borderSide: BorderSide.none)),
+                          ),
                         ),
                       ),
                     ),
@@ -80,7 +91,7 @@ class HomeView extends HomeViewModel {
                             ],
                             borderRadius: BorderRadius.circular(12),
                             color: Theme.of(context).primaryColor),
-                        child: FormApresentationCep(visible: true)),
+                        child: const FormApresentationCep()),
                   ],
                 ),
               ),
@@ -107,7 +118,6 @@ class HomeView extends HomeViewModel {
               side: BorderSide.none, borderRadius: BorderRadius.circular(100)),
           onPressed: () => {
               pageViewController.jumpToPage(1),
-            getcep('')
           },
           child: const Icon(
             Icons.search_outlined,
@@ -115,9 +125,11 @@ class HomeView extends HomeViewModel {
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: CustomButomBar(
-          activeIndex: activeIndex,
-          ontap: ({required index}) => setindextab(newindex: index),
+        bottomNavigationBar: Consumer<ViaCepService>(
+          builder: (context, value, child) =>  CustomButomBar(
+            activeIndex: activeIndex,
+            ontap: ({required index}) => setindextab(newindex: index),
+          ),
         ));
   }
 }

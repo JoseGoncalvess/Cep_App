@@ -1,5 +1,5 @@
-import 'package:cep_app/repositories/cep_repositorie.dart';
-import 'package:cep_app/repositories/cep_repositorie_impl.dart';
+import 'package:cep_app/repositories/cep_repositorie/cep_repositorie.dart';
+import 'package:cep_app/repositories/cep_repositorie/cep_repositorie_impl.dart';
 import 'package:flutter/material.dart';
 
 import '../models/via_cep_model.dart';

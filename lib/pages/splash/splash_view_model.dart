@@ -9,7 +9,7 @@ abstract class SplashViewModel extends State {
     super.initState();
     Future.delayed(const Duration(seconds: 3)).then((value) => {
           Navigator.of(context)
-              .pushReplacement(CupertinoPageRoute(builder: (context) =>  const Home()))
+              .pushReplacement(CupertinoPageRoute(builder: (context) =>   Home()))
         });
   }
 }
