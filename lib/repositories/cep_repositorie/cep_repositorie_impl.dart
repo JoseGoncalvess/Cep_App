@@ -1,8 +1,8 @@
 import 'dart:developer';
-import 'package:cep_app/repositories/cep_repositorie.dart';
+import 'package:cep_app/repositories/cep_repositorie/cep_repositorie.dart';
 import 'package:dio/dio.dart';
 
-import '../models/via_cep_model.dart';
+import '../../models/via_cep_model.dart';
 
 class CepRepositorieImpl implements CepRepositorie {
   
@@ -16,4 +16,6 @@ class CepRepositorieImpl implements CepRepositorie {
       throw Exception('erro ao buscar CEP');
     }
   }
+  
+
 }

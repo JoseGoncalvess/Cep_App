@@ -2,7 +2,6 @@
 
 import 'dart:convert';
 
-
 class ViaCepModel {
   final String cep;
   final String logradouro;
@@ -21,8 +20,6 @@ class ViaCepModel {
     required this.uf,
     required this.ddd,
   });
-
-
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,12 +44,18 @@ class ViaCepModel {
       ddd: map['ddd'] as String,
     );
   }
-
+  factory ViaCepModel.empyt() {
+    return ViaCepModel(
+        cep: '',
+        logradouro: '',
+        complemento: '',
+        bairro: '',
+        cidade: '',
+        uf: '',
+        ddd: '');
+  }
   String toJson() => json.encode(toMap());
 
-  factory ViaCepModel.fromJson(String source) => ViaCepModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ViaCepModel.fromJson(String source) =>
+      ViaCepModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }
-
-      
-
-
