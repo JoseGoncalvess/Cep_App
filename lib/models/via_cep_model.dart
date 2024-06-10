@@ -33,6 +33,8 @@ class ViaCepModel {
     };
   }
 
+
+
   factory ViaCepModel.fromMap(Map<String, dynamic> map) {
     return ViaCepModel(
       cep: map['cep'] as String,

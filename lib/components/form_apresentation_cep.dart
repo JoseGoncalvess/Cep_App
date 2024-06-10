@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../service/via_cep_service.dart';
 
 class FormApresentationCep extends StatefulWidget {
 
-  const FormApresentationCep({super.key,});
+  const FormApresentationCep({super.key, required this.isfavor, required this.ontap,});
+  final bool isfavor;
+  final Function() ontap;
 
   @override
   State<FormApresentationCep> createState() => _FormApresentationCepState();
@@ -30,10 +31,12 @@ class _FormApresentationCepState extends State<FormApresentationCep> {
                 ),
               ),
               IconButton(
-                  onPressed: () {},
+                  onPressed: () =>
+                   widget.ontap()
+                  ,
                   icon: Icon(
-                    color:false? Colors.white : Colors.red,
-                    false? Icons.favorite_border_rounded:
+                    color:widget.isfavor? Colors.white : Colors.red,
+                    widget.isfavor? Icons.favorite_border_rounded:
                     Icons.favorite_rounded,
                     size: MediaQuery.of(context).size.width * 0.1,
                   ))

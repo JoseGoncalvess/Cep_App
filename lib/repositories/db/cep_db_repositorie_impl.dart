@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:cep_app/models/custom_dio.dart';
 import 'package:cep_app/models/cep_model.dart';
+import 'package:cep_app/models/via_cep_model.dart';
 import 'package:dio/dio.dart';
 
 import 'cep_db_repositorie.dart';
@@ -24,8 +25,15 @@ class CepDbRepositorieImpl extends CepDbRepositorie {
   }
 
   @override
-  Future<void> postcep({required Cepmodel cep}) async {
-    log("message");
+  Future<void> postcep({required ViaCepModel cep}) async {
+    log(cep.toJson());
+
+  try {
+    await _customDio.dio.post("/Favor_Ceps"  ,data: cep.toMap());
+  } catch (e) {
+    log(e.toString());
+  }
+
   }
 
   @override
