@@ -1,20 +1,23 @@
-
-import 'dart:developer';
-
 import 'package:cep_app/models/cep_model.dart';
-
+import '../models/via_cep_model.dart';
 import '../repositories/db/cep_db_repositorie_impl.dart';
 
-class CepService {
+class CepService extends CepDbRepositorieImpl {
   
-  CepDbRepositorieImpl cepimpl = CepDbRepositorieImpl();
 
-  savecepdb(Cepmodel cep)async{
-    log(cep.toJson());
-    cepimpl.postcep(cep: cep);
+  savecepdb(ViaCepModel cep) async {
+    postcep(cep: cep);
   }
-   Future loadcepdb()async{
-    log(cepimpl.getallceps().toString());
-    
+
+  Future<List<Cepmodel>> loadcepdb() async {
+    List<Cepmodel> cepfavor = [];
+
+    cepfavor = await getallceps();
+
+    return cepfavor;
+  }
+
+  removecep(String cep)async{
+    deletcep(cepid: cep);
   }
 }
