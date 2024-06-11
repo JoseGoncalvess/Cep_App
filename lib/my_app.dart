@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider<ViaCepService>(create: (context) => ViaCepService())],
+      providers: [ChangeNotifierProvider<ViaCepService>(create: (context) => ViaCepService()),],
       child: MaterialApp(
         title: 'Busca CEP',
         theme: ThemeData(

@@ -35,9 +35,9 @@ class _FormApresentationCepState extends State<FormApresentationCep> {
                    widget.ontap()
                   ,
                   icon: Icon(
-                    color:widget.isfavor? Colors.white : Colors.red,
-                    widget.isfavor? Icons.favorite_border_rounded:
-                    Icons.favorite_rounded,
+                    color:(widget.isfavor == true)? Colors.red : Colors.white,
+                    (widget.isfavor == true)? Icons.favorite_rounded:
+                    Icons. favorite_border_rounded  ,
                     size: MediaQuery.of(context).size.width * 0.1,
                   ))
             ],
