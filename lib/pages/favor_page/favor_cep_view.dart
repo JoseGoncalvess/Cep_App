@@ -12,9 +12,8 @@ class FavorCepView extends FavorCepViewModel {
         behavior: HitTestBehavior.translucent,
         direction: DismissDirection.startToEnd,
         onDismissed: (direction) {
-         removeitem(index);
-        //  favors.removeAt(index);
           CepService().deletcep(cepid: favors[index].cepid);
+         removeitem(index);
 
         },
         

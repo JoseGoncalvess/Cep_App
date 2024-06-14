@@ -1,6 +1,4 @@
-
 import 'dart:convert';
-
 import 'package:shared_preferences/shared_preferences.dart';
 import 'local_data_favor.dart';
 
@@ -30,6 +28,26 @@ class LocalDataFavorImp implements LocalDataFavor {
     String response = prefs.getString(key) ?? '';
    return response.isEmpty?{}: jsonDecode(response);
   }
+  
+  @override
+  Future<void> deletfavorcep({required String cep, required String key}) async{
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      List<String> cepsFavor = await prefs.getStringList(key)??[];
+      cepsFavor.remove(cep);
+      prefs.setStringList(key, cepsFavor);
+  }
+  
+  @override
+  Future<void> deletforkeysdb({required String cep, required String key})async {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      String cepsFavor = await prefs.getString(key)??"";
+      Map<String, dynamic> map = jsonDecode(cepsFavor);
+      map.remove(cep);
+      prefs.setString(key, jsonEncode(map));
+  }
+
+
+  
   
 
 

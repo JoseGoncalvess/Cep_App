@@ -52,4 +52,7 @@ class CepService extends CepDbRepositorieImpl {
     ) as Map<String, dynamic>;
     return keys;
   }
+  deletkeylocal({required String cep}){
+      
+  }
 }
