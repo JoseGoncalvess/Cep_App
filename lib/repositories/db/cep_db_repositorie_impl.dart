@@ -38,6 +38,6 @@ class CepDbRepositorieImpl extends CepDbRepositorie {
 
   @override
   Future<void> deletcep({required String cepid}) async {
-    _customDio.dio.delete("/Favor_Ceps/$cepid");
+     _customDio.dio.delete("/Favor_Ceps/$cepid");
   }
 }

@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:cep_app/repositories/cep_repositorie/cep_repositorie_impl.dart';
 import 'package:flutter/material.dart';
-
 import '../models/via_cep_model.dart';
 import '../repositories/local_data/local_data_favor_imp.dart';
 
@@ -15,6 +12,11 @@ class ViaCepService extends ChangeNotifier {
   ViaCepModel get viacep => _viacep;
 
   setvisible(bool value) {
+    visible = value;
+    notifyListeners();
+  }
+
+   setisfavor(bool value) {
     isfavor = value;
     notifyListeners();
   }
@@ -25,6 +27,7 @@ class ViaCepService extends ChangeNotifier {
       visible = true;
     }
     notifyListeners();
+  
   }
 
   Future getcep(String cep) async {
@@ -34,12 +37,15 @@ class ViaCepService extends ChangeNotifier {
 
   cleancep() {
     newcep = ViaCepModel.empyt();
+    setvisible(false);
+    notifyListeners();
   }
 
   saveceplocal(String cep) async {
     List<String> favor = await local_favor.getfavorceps(key: "@favor_cep");
     favor.add(cep);
     local_favor.setfavorceps(key: "@favor_cep", myfavorceps: favor);
+    setisfavor(true);
   }
 
   _validadefavor(String cep) async {
@@ -47,8 +53,8 @@ class ViaCepService extends ChangeNotifier {
     await cepRepositorie
         .getCep(cep)
         .then((value) => {
-        setvisible(favor.contains(value.cep)),
-        log(isfavor.toString())});
+      setisfavor(favor.contains(value.cep)),
+        });
   }
 
   removecepfavor(String cep){
