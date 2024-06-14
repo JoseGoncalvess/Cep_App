@@ -42,9 +42,6 @@ viewstateseach(bool value){
   seachview = value;
 }
 
-savecepdb(){
-  
-}
 
   
 }

@@ -2,7 +2,6 @@ import 'package:cep_app/components/baner_initi_page.dart';
 import 'package:cep_app/components/custom_butom_bar.dart';
 import 'package:cep_app/components/custom_seach_cep.dart';
 import 'package:cep_app/components/form_apresentation_cep.dart';
-import 'package:cep_app/models/cep_model.dart';
 import 'package:cep_app/pages/home/home_view_model.dart';
 import 'package:cep_app/service/cep_service.dart';
 import 'package:flutter/material.dart';
