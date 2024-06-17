@@ -2,7 +2,9 @@ import 'package:cep_app/pages/home/home.dart';
 import 'package:cep_app/service/via_cep_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../models/via_cep_model.dart';
 import '../../repositories/db/cep_db_repositorie_impl.dart';
+import '../../service/cep_service.dart';
 
 abstract class HomeViewModel extends State<Home> {
   final CepDbRepositorieImpl dbrepositorie = CepDbRepositorieImpl();
@@ -38,10 +40,13 @@ abstract class HomeViewModel extends State<Home> {
     }
   }
 
-viewstateseach(bool value){
-  seachview = value;
-}
+  viewstateseach(bool value) {
+    seachview = value;
+  }
 
-
-  
+ void savecepinfavor({required ViaCepModel newcep}) {
+    CepService().savecepdb(newcep);
+    ViaCepService().saveceplocal(newcep.cep);
+    
+  }
 }

@@ -32,7 +32,7 @@ class LocalDataFavorImp implements LocalDataFavor {
   @override
   Future<void> deletfavorcep({required String cep, required String key}) async{
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-      List<String> cepsFavor = await prefs.getStringList(key)??[];
+      List<String> cepsFavor =  prefs.getStringList(key)??[];
       cepsFavor.remove(cep);
       prefs.setStringList(key, cepsFavor);
   }
@@ -40,7 +40,7 @@ class LocalDataFavorImp implements LocalDataFavor {
   @override
   Future<void> deletforkeysdb({required String cep, required String key})async {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-      String cepsFavor = await prefs.getString(key)??"";
+      String cepsFavor =  prefs.getString(key)??"";
       Map<String, dynamic> map = jsonDecode(cepsFavor);
       map.remove(cep);
       prefs.setString(key, jsonEncode(map));

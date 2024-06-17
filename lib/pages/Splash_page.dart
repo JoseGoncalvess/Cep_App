@@ -18,7 +18,7 @@ class _SplashPageState extends State<SplashPage> {
               .push(CupertinoPageRoute(builder: (context) => const HomePage()))
         });
   }
-
+@override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(

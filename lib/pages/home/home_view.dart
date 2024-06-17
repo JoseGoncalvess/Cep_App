@@ -3,7 +3,6 @@ import 'package:cep_app/components/custom_butom_bar.dart';
 import 'package:cep_app/components/custom_seach_cep.dart';
 import 'package:cep_app/components/form_apresentation_cep.dart';
 import 'package:cep_app/pages/home/home_view_model.dart';
-import 'package:cep_app/service/cep_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../service/via_cep_service.dart';
@@ -51,15 +50,15 @@ class HomeView extends HomeViewModel {
                           ontap: (focus) => viewstateseach(focus),
                           twotap: (submit) => viewstateseach(submit)),
                       Consumer<ViaCepService>(
-                        builder: (context, value, child) => AnimatedOpacity(
+                        builder: (context, service, child) => AnimatedOpacity(
                           duration: const Duration(milliseconds: 900),
                           curve: Curves.decelerate,
-                          opacity: value.visible ? 1 : 0,
+                          opacity: service.visible ? 1 : 0,
                           child: Container(
                             width: MediaQuery.of(context).size.width *
-                                (value.visible ? 0.9 : 0),
+                                (service.visible ? 0.9 : 0),
                             height: MediaQuery.of(context).size.height *
-                                (value.visible ? 0.5 : 0),
+                                (service.visible ? 0.5 : 0),
                             decoration: BoxDecoration(
                                 boxShadow: const [
                                   BoxShadow(
@@ -70,16 +69,15 @@ class HomeView extends HomeViewModel {
                                 ],
                                 borderRadius: BorderRadius.circular(12),
                                 color: Theme.of(context).primaryColor),
-                            child: FormApresentationCep(
-                              isfavor: value.isfavor,
-                              ontap: () {
-                                (value.isfavor==true)?(){}:
-                                {CepService()
-                                    .savecepdb(value.viacep),
-                                value.setvisible(true),
-                                value.saveceplocal(value.viacep.cep)};
-                              },
-                            ),
+                            child: service.viacep.cep.isEmpty
+                                ? const Center(
+                                    child:  CircularProgressIndicator(),
+                                  )
+                                : FormApresentationCep(
+                                    isfavor: service.isfavor,
+                                    ontap: () =>
+                                        savecepinfavor(newcep: service.viacep),
+                                  ),
                           ),
                         ),
                       ),

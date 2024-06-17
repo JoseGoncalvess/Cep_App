@@ -7,12 +7,21 @@ import 'favo_cep.dart';
 
 abstract class FavorCepViewModel extends State<FavoCep> {
   List<Cepmodel> favors = [];
+  bool isloading = false;
   @override
   void initState() {
     super.initState();
-    CepService().loadcepdb().then((value) => setState(() {
-          favors = value;
-        }));
+   setState(() {
+      isloading = true; 
+   });
+    CepService().loadcepdb().then((value) => initdata(list: value));
+  }
+
+  void initdata({required List<Cepmodel> list}){
+    Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {
+      favors = list;
+      isloading = false;
+    }));
   }
 
   void removeitem(int indexitem) {

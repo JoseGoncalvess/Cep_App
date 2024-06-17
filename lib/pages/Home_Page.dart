@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:cep_app/repositories/cep_repositorie/cep_repositorie.dart';
 import 'package:cep_app/repositories/cep_repositorie/cep_repositorie_impl.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Column(
                       children: [
-                        Text(
+                        const Text(
                           'Insira abaixo o CEP',
                           style: TextStyle()
                         ),
@@ -134,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.orange[700]),
-                      child: Row(
+                      child: const Row(
                         children: [Icon(Icons.search_sharp), Text('Buscar')],
                       ),
                     ),
@@ -168,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       child: Column(
                         children: [
-                          Text(
+                          const Text(
                             'Logradouro',
                             style:TextStyle(color: Colors.white,
                                     fontSize: 18,
@@ -199,7 +200,7 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           child: Column(
                             children: [
-                              Text(
+                              const Text(
                                 'Complemento',
                                 style: TextStyle(color: Colors.white,
                                     fontSize: 18,
@@ -227,7 +228,7 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           child: Column(
                             children: [
-                              Text(
+                              const Text(
                                 'Bairro',
                                 style: TextStyle(color: Colors.white,
                                     fontSize: 18,
@@ -260,7 +261,7 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           child: Column(
                             children: [
-                              Text(
+                              const Text(
                                 'Complemento',
                                 style: TextStyle(color: Colors.white,
                                     fontSize: 18,
@@ -288,7 +289,7 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           child: Column(
                             children: [
-                              Text(
+                              const Text(
                                 'Bairro',
                                 style:
                                 
@@ -323,7 +324,7 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           child: Column(
                             children: [
-                              Text(
+                              const Text(
                                 'DDD',
                                 style: TextStyle(color: Colors.white,
                                     fontSize: 18,
@@ -351,7 +352,7 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           child: Column(
                             children: [
-                              Text(
+                              const Text(
                                 'CEP',
                                 style: TextStyle(color: Colors.white,
                                     fontSize: 18,

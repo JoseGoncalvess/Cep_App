@@ -16,7 +16,7 @@ class _FormApresentationCepState extends State<FormApresentationCep> {
   @override
   Widget build(BuildContext context) {
     return Consumer<ViaCepService>(
-      builder: (_, value, child) => Column(
+      builder: (_, service, child) =>  Column(
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -31,8 +31,9 @@ class _FormApresentationCepState extends State<FormApresentationCep> {
                 ),
               ),
               IconButton(
-                  onPressed: () =>
-                   widget.ontap()
+                  onPressed: () {
+                    service.isfavor==true?service.removecepfavor(service.viacep.cep): widget.ontap();
+                  }
                   ,
                   icon: Icon(
                     color:(widget.isfavor == true)? Colors.red : Colors.white,
@@ -55,9 +56,9 @@ class _FormApresentationCepState extends State<FormApresentationCep> {
                       borderRadius: BorderRadius.circular(15)),
                   alignment: Alignment.center,
                   child: Visibility(
-                      visible: value.visible,
+                      visible: service.visible,
                       child: Text(
-                      value.viacep.logradouro,
+                      service.viacep.logradouro,
                         style: Theme.of(context).textTheme.displaySmall,
                       )),
                 ),
@@ -82,9 +83,9 @@ class _FormApresentationCepState extends State<FormApresentationCep> {
                           borderRadius: BorderRadius.circular(15)),
                       alignment: Alignment.center,
                       child: Visibility(
-                          visible: value.visible,
+                          visible: service.visible,
                           child: Text(
-                            value.viacep.cidade,
+                            service.viacep.cidade,
                             style: Theme.of(context).textTheme.displaySmall,
                           )),
                     ),
@@ -104,9 +105,9 @@ class _FormApresentationCepState extends State<FormApresentationCep> {
                           borderRadius: BorderRadius.circular(15)),
                       alignment: Alignment.center,
                       child: Visibility(
-                          visible:value.visible,
+                          visible:service.visible,
                           child: Text(
-                            value.viacep.bairro,
+                            service.viacep.bairro,
                             style: Theme.of(context).textTheme.displaySmall,
                           )),
                     ),
@@ -131,9 +132,9 @@ class _FormApresentationCepState extends State<FormApresentationCep> {
                           borderRadius: BorderRadius.circular(15)),
                       alignment: Alignment.center,
                       child: Visibility(
-                          visible: value.visible,
+                          visible: service.visible,
                           child: Text(
-                            value.viacep.complemento,
+                            service.viacep.complemento,
                             style: Theme.of(context).textTheme.displaySmall,
                           )),
                     ),
@@ -152,9 +153,9 @@ class _FormApresentationCepState extends State<FormApresentationCep> {
                           borderRadius: BorderRadius.circular(15)),
                       alignment: Alignment.center,
                       child: Visibility(
-                          visible: value.visible,
+                          visible: service.visible,
                           child: Text(
-                            value.viacep.uf,
+                            service.viacep.uf,
                             style: Theme.of(context).textTheme.displaySmall,
                           )),
                     ),
@@ -178,9 +179,9 @@ class _FormApresentationCepState extends State<FormApresentationCep> {
                           borderRadius: BorderRadius.circular(15)),
                       alignment: Alignment.center,
                       child: Visibility(
-                          visible: value.visible,
+                          visible: service.visible,
                           child: Text(
-                            value.viacep.ddd,
+                            service.viacep.ddd,
                             style: Theme.of(context).textTheme.displaySmall,
                           )),
                     ),
@@ -199,9 +200,9 @@ class _FormApresentationCepState extends State<FormApresentationCep> {
                           borderRadius: BorderRadius.circular(15)),
                       alignment: Alignment.center,
                       child: Visibility(
-                          visible: value.visible,
+                          visible: service.visible,
                           child: Text(
-                            value.viacep.cep,
+                            service.viacep.cep,
                             style: Theme.of(context).textTheme.displaySmall,
                           )),
                     ),
