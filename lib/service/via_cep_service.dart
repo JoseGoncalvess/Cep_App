@@ -44,9 +44,12 @@ class ViaCepService extends ChangeNotifier {
 
   saveceplocal(String cep) async {
     List<String> favor = await local_favor.getfavorceps(key: "@favor_cep");
+    if (!favor.contains(cep)) {
     favor.add(cep);
     local_favor.setfavorceps(key: "@favor_cep", myfavorceps: favor);
     setisfavor(true);
+    }
+    
   }
 
   _validadefavor(String cep) async {

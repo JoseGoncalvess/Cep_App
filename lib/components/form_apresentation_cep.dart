@@ -4,8 +4,7 @@ import '../service/via_cep_service.dart';
 
 class FormApresentationCep extends StatefulWidget {
 
-  const FormApresentationCep({super.key, required this.isfavor, required this.ontap,});
-  final bool isfavor;
+  const FormApresentationCep({super.key, required this.ontap,});
   final Function() ontap;
 
   @override
@@ -36,8 +35,8 @@ class _FormApresentationCepState extends State<FormApresentationCep> {
                   }
                   ,
                   icon: Icon(
-                    color:(widget.isfavor == true)? Colors.red : Colors.white,
-                    (widget.isfavor == true)? Icons.favorite_rounded:
+                    color:(service.isfavor == true)? Colors.red : Colors.white,
+                    (service.isfavor == true)? Icons.favorite_rounded:
                     Icons. favorite_border_rounded  ,
                     size: MediaQuery.of(context).size.width * 0.1,
                   ))

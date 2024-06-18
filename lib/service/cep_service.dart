@@ -21,29 +21,33 @@ class CepService extends CepDbRepositorieImpl {
   }
 
   initloadcepsid() async {
+    LocalDataFavorImp local = LocalDataFavorImp();
     List<Cepmodel> cepfavor = [];
-    List<String> favor = [];
-    Map<String, dynamic> myfavorceps = {};
 
-       Map<String, dynamic> map = await LocalDataFavorImp().getforkeysdb(key: "@favor_cep_key");
-        if (map.isEmpty) {
-      cepfavor = await getallceps();
-
+    List<String> favor = await local.getfavorceps(key: "@favor_cep");
+    Map<String, dynamic> myfavorceps =
+        await local.getforkeysdb(key: "@favor_cep_key");
+    cepfavor = await getallceps();
+    if (myfavorceps.isEmpty || myfavorceps.length < cepfavor.length) {
       if (cepfavor.isNotEmpty) {
         for (var ceps in cepfavor) {
-          myfavorceps[ceps.cep] = ceps.cepid;
-          favor.add(ceps.cep);
+          if (!myfavorceps.containsKey(ceps.cep)) {
+            myfavorceps[ceps.cep] = ceps.cepid;
+            if (!favor.contains(ceps.cep)) {
+              favor.add(ceps.cep);
+            }
+          }
         }
-          _savekeyslocal(mapkey: myfavorceps, favor: favor);
-      } 
-
-        }
+        _savekeyslocal(mapkey: myfavorceps, favor: favor);
+      }
+    }
   }
 
-  _savekeyslocal({required Map<String, dynamic> mapkey, required List<String> favor}){
-          LocalDataFavorImp().setforkeysdb(
-          key: "@favor_cep_key", myfavorceps: jsonEncode(mapkey));
-      LocalDataFavorImp().setfavorceps(key: "@favor_cep", myfavorceps: favor);
+  _savekeyslocal(
+      {required Map<String, dynamic> mapkey, required List<String> favor}) {
+    LocalDataFavorImp()
+        .setforkeysdb(key: "@favor_cep_key", myfavorceps: jsonEncode(mapkey));
+    LocalDataFavorImp().setfavorceps(key: "@favor_cep", myfavorceps: favor);
   }
 
   Map<String, dynamic> _loadcepid() {
@@ -52,7 +56,6 @@ class CepService extends CepDbRepositorieImpl {
     ) as Map<String, dynamic>;
     return keys;
   }
-  deletkeylocal({required String cep}){
-      
-  }
+
+  deletkeylocal({required String cep}) {}
 }

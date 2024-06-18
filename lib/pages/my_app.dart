@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'pages/splash/splash.dart';
-import 'service/via_cep_service.dart';
+import 'splash/splash.dart';
+import '../service/via_cep_service.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

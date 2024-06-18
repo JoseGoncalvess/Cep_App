@@ -74,7 +74,7 @@ class HomeView extends HomeViewModel {
                                     child:  CircularProgressIndicator(),
                                   )
                                 : FormApresentationCep(
-                                    isfavor: service.isfavor,
+                                   
                                     ontap: () =>
                                         savecepinfavor(newcep: service.viacep),
                                   ),
